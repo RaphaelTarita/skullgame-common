@@ -1,4 +1,4 @@
-SkullGame Common
+# SkullGame Common
 
 This repository contains common code that is shared between
 the [SkullGame Server](https://github.com/RaphaelTarita/skullgame-server) and any potential client (for example the
