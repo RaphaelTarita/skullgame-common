@@ -1,4 +1,4 @@
-package com.rtarita.skull.common
+package com.rtarita.skull.common.moves
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable

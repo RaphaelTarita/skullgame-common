@@ -1,4 +1,4 @@
-package com.rtarita.skull.common
+package com.rtarita.skull.common.state
 
 import java.util.Objects
 

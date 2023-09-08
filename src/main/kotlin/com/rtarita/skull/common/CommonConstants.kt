@@ -1,5 +1,6 @@
 package com.rtarita.skull.common
 
+import com.rtarita.skull.common.state.Card
 import kotlinx.serialization.json.Json
 
 public object CommonConstants {

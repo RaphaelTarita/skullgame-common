@@ -1,5 +1,6 @@
-package com.rtarita.skull.common
+package com.rtarita.skull.common.state
 
+import com.rtarita.skull.common.CommonConstants
 import kotlinx.serialization.Serializable
 
 @Serializable

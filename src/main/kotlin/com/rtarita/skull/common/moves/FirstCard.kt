@@ -1,5 +1,6 @@
-package com.rtarita.skull.common
+package com.rtarita.skull.common.moves
 
+import com.rtarita.skull.common.state.Card
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
