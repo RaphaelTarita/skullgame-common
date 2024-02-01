@@ -5,9 +5,9 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("multiplatform") version "1.9.21"
-    kotlin("plugin.serialization") version "1.9.21"
-    id("io.gitlab.arturbosch.detekt") version "1.23.4"
+    kotlin("multiplatform") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.22"
+    id("io.gitlab.arturbosch.detekt") version "1.23.5"
     `maven-publish`
 }
 
