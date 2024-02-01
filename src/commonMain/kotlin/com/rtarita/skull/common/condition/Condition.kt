@@ -1,5 +1,6 @@
 package com.rtarita.skull.common.condition
 
+@OptIn(ExperimentalStdlibApi::class)
 public interface Condition<T : Any> : AutoCloseable {
     public val defaultPredicate: (T) -> Boolean
 

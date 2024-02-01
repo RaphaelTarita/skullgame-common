@@ -1,11 +1,11 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.targets.js.dsl.ExperimentalWasmDsl
+import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("jvm") version "1.9.21"
+    kotlin("multiplatform") version "1.9.21"
     kotlin("plugin.serialization") version "1.9.21"
     id("io.gitlab.arturbosch.detekt") version "1.23.4"
-    `java-library`
     `maven-publish`
 }
 
@@ -16,20 +16,58 @@ repositories {
     mavenCentral()
 }
 
-dependencies {
-    compileOnly("org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.7.2")
-    compileOnly("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.1")
-}
-
 kotlin {
     explicitApi()
+    withSourcesJar(true)
+    jvm()
+    js(IR) {
+        browser()
+        nodejs()
+    }
+    @OptIn(ExperimentalWasmDsl::class)
+    wasmJs {
+        browser()
+        nodejs()
+    }
+    mingwX64()
+    linuxX64()
+    linuxArm64()
+    androidNativeArm32()
+    androidNativeArm64()
+    androidNativeX86()
+    androidNativeX64()
+    iosArm64()
+    iosSimulatorArm64()
+    iosX64()
+    macosX64()
+    macosArm64()
+    watchosX64()
+    watchosArm32()
+    watchosArm64()
+    watchosSimulatorArm64()
+    watchosDeviceArm64()
+    tvosX64()
+    tvosArm64()
+    tvosSimulatorArm64()
+
+    sourceSets {
+        val commonMain by getting {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+            }
+        }
+
+        // workaround, see https://github.com/Kotlin/kotlinx.coroutines/issues/3968
+        val nativeMain by creating {
+            dependencies {
+                implementation("org.jetbrains.kotlinx:atomicfu:0.23.2")
+            }
+        }
+    }
 }
 
-java {
-    withSourcesJar()
-}
-
-tasks.withType<KotlinCompile>().all {
+tasks.withType<KotlinJvmCompile>().configureEach {
     compilerOptions {
         jvmTarget = JvmTarget.JVM_17
     }
@@ -37,12 +75,5 @@ tasks.withType<KotlinCompile>().all {
 
 detekt {
     basePath = rootDir.toString()
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("SkullgameCommon") {
-            from(components["java"])
-        }
-    }
+    source.setFrom("src/commonMain/kotlin")
 }

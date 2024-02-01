@@ -4,6 +4,7 @@ import com.rtarita.skull.common.condition.BooleanCondition
 import com.rtarita.skull.common.condition.Condition
 import com.rtarita.skull.common.condition.SignalCondition
 import com.rtarita.skull.common.condition.isFalsePredicate
+import kotlin.jvm.JvmInline
 
 // DSL definitions
 

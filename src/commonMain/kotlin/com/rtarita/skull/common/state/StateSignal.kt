@@ -1,6 +1,6 @@
 package com.rtarita.skull.common.state
 
-import java.util.Objects
+import com.rtarita.skull.common.hash
 
 public sealed class StateSignal(
     private val code: Byte,
@@ -50,6 +50,6 @@ public sealed class StateSignal(
     }
 
     override fun equals(other: Any?): Boolean = if (other is StateSignal) code == other.code && gameid == other.gameid else false
-    override fun hashCode(): Int = Objects.hash(code, gameid)
+    override fun hashCode(): Int = hash(code, gameid)
     override fun toString(): String = "$code#${this::class.simpleName}" + if (gameid.isNotEmpty()) "($gameid)" else ""
 }
