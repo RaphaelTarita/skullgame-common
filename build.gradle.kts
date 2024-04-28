@@ -5,9 +5,9 @@ import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin
 import org.jetbrains.kotlin.gradle.tasks.KotlinJvmCompile
 
 plugins {
-    kotlin("multiplatform") version "1.9.22"
-    kotlin("plugin.serialization") version "1.9.22"
-    id("io.gitlab.arturbosch.detekt") version "1.23.5"
+    kotlin("multiplatform") version "1.9.23"
+    kotlin("plugin.serialization") version "1.9.23"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
     `maven-publish`
 }
 
@@ -55,15 +55,8 @@ kotlin {
     sourceSets {
         val commonMain by getting {
             dependencies {
-                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0-RC")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
-            }
-        }
-
-        // workaround, see https://github.com/Kotlin/kotlinx.coroutines/issues/3968
-        val nativeMain by creating {
-            dependencies {
-                implementation("org.jetbrains.kotlinx:atomicfu:0.23.2")
+                implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
+                implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
             }
         }
     }
