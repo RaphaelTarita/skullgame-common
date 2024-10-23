@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "com.rtarita.skull"
-version = "1.0.4-SNAPSHOT"
+version = "1.0.4"
 
 repositories {
     mavenCentral()
